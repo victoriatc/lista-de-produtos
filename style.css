@@ -1,2 +1,113 @@
-@import url(https://fonts.google.com/specimen/Sour+Gummy);
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap');
+
+body {
+    font-family: 'sour Gummy', sans-serif;
+    background-color: #ebebeb;
+    color: #525252;
+    margin: 0;
+    padding: 15px;
+  }
+  
+
+  h1 {
+    text-align: center;
+    color: #333333;
+    font-style: oblique;
+  }
+  
+  /* Input de busca */
+  #search {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Estilo da lista de produtos */
+  #products-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Cada card de produto */
+  #products-list li {
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    margin: 5px;
+  }
+
+    #products-list li:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Estilo da imagem do produto */
+  #products-list img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  /* Detalhes do produto */
+  #products-list div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Título do produto */
+  #products-list a {
+    font-size: 1.1em;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  #products-list a:hover {
+    color: #007bff;
+  }
+  
+  /* Preço */
+  #products-list p {
+    color: #138b13;
+    font-weight: bold;
+    margin: 8px 0;
+  }
+  
+  /* Checkbox de salvar */
+  #products-list input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  /* Botão de adicionar ao carrinho */
+  #products-list button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #0066ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  #products-list button:hover {
+    background-color: #0056b3;
+  }
+  
 
