@@ -3,6 +3,7 @@ async function getApi() {
     const errorDiv = document.querySelector("#error")
     const productList = document.querySelector("#products-list")
     const inputSearch = document.querySelector("#search")
+    const cartShopping = document.querySelector("#shopping")
 
     loading.style.display = "block"
     productList.style.display = "none"
@@ -18,31 +19,21 @@ async function getApi() {
         const data = await response.json()
 
         loading.style.display = "none"
-        productList.style.display = "block"
+        productList.style.display = "flex"
 
-        populateList(data)
+        populateList(data)        
 
-        //filtro de pesquisa:
-        inputSearch.addEventListener("input", () => {
-            if (inputSearch.value.length > 2) {
-                const filteredData = data.filter(product =>
-                    product.title.toLowerCase().includes(inputSearch.value.toLowerCase())
-                );
-                productList.innerHTML = ""
-                populateList(filteredData)
-            } else {
-                productList.innerHTML = ""
-                populateList(data)
-            }
-        })}
         
-        catch (error) {
+    }
+    
+    catch (error) {
+
         loading.style.display = "none"
         errorDiv.style.display = "block"
         errorDiv.textContent = "Failed to load the products."
 
-        console.error("Error fetching data:", error)
-    }
+        console.error("Error fetching data:", error) }
+
 }
 
 function populateList(data) {
@@ -92,7 +83,77 @@ function populateList(data) {
 
     })
 
+    //campo de pesquisa
+
+    handleSearch(data)
+
+    function handleSearch(data){
+
+        const inputSearch = document.querySelector("#search")
+        const productList = document.querySelector("#products-list")
+
+        inputSearch.addEventListener("input", () => {
+
+            if (inputSearch.value.length > 2) {
+                const filteredData = data.filter(product =>
+                    product.title.toLowerCase().includes(inputSearch.value.toLowerCase())
+                );
+                productList.innerHTML = ""
+                populateList(filteredData)
+            } else {
+                productList.innerHTML = ""
+                populateList(data)
+            }
+        })
+    }
+   
+    //categorias 
+    function CategoryFilter(data) {
+    const filterContainer = document.querySelector("#category-filter")
+    const fragment = document.createDocumentFragment()
+    let menuCategories = {}
+
+ 
+    data.forEach((item) => {
+        menuCategories[item.category] = true;
+    })
+
+ 
+    Object.keys(menuCategories).forEach((category) => {
+        const checkbox = document.createElement("input")
+        checkbox.setAttribute("type", "checkbox")
+        checkbox.setAttribute("id", `category-${category}`)
+        checkbox.setAttribute("value", category)
+
+        const label = document.createElement("label")
+        label.setAttribute("for", `category-${category}`)
+        label.textContent = category
+
+       
+        checkbox.addEventListener("change", () => {
+            const selectedCategories = Array.from(
+                filterContainer.querySelectorAll("input:checked")
+            ).map((input) => input.value)
+
+            const filteredData = selectedCategories.length
+                ? data.filter((product) =>
+                      selectedCategories.includes(product.category)
+                  )
+                : data
+
+            populateList(filteredData)
+        })
+
+        fragment.appendChild(checkbox)
+        fragment.appendChild(label)
+    })
+
+    filterContainer.appendChild(fragment)
+}
+        
+
     list.appendChild(fragment)
 }
+
 
 getApi()
