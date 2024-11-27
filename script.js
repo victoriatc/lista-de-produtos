@@ -9,6 +9,9 @@ async function init() {
     //load wishlist from local storage
     function addToWishiList(itemId){
         let wishlist = JSON.parse(localStorage.getItem('wishlist'));
+        if (!wishlist.includes(itemId)) {
+            wishlist.push(itemId);}
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
 
 
