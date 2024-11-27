@@ -8,16 +8,9 @@ async function init() {
 
     //load wishlist from local storage
     function addToWishiList(itemId){
-        return JSON.parse(localStorage.getItem('wishlist'))
+        let wishlist = JSON.parse(localStorage.getItem('wishlist'));
     }
 
-    //Add item to wishlist
-    function addToWishlist(itemId) {
-    const wishlist = loadWishlist()
-    if (!wishlist.includes(itemId)) {
-      wishlist.push(itemId)
-      saveWishlist(wishlist)
-    }}
 
     try {
       const data = await fetchProducts();
