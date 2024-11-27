@@ -17,9 +17,7 @@ async function init() {
     if (!wishlist.includes(itemId)) {
       wishlist.push(itemId)
       saveWishlist(wishlist)
-      console.log(`Item ${itemId} added to wishlist.`);
     }}
-
 
     try {
       const data = await fetchProducts();
