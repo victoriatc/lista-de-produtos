@@ -9,24 +9,30 @@
 </head>
 
 <body>
-    <h1>Product List</h1>
-    <input type="search" id="search" placeholder="Search products...">
+    <header>
+        <h1>Product List</h1>
+        <input type="search" id="search" placeholder="Search products...">
+    </header>
     
-    <div id="loading" class="loading">Loading...</div>
-    <div id="error" class="error" style="display: none;">Failed to load the products. Please try again later.</div>
-    
-    <div id="category-filter" class="category-filter">
-        <h3>Filter by Category:</h3>
-    </div>
+    <main>
+        <div id="loading" class="loading">Loading...</div>
+        <div id="error" class="error" style="display: none;">Failed to load the products. Please try again later.</div>
+        
+        <aside id="category-filter" class="category-filter">
+            <h3>Filter by Category:</h3>
+        </aside>
 
-    <div id="shopping" class="shopping">
-        <img id="cart-counter" src="https://cdn-icons-png.flaticon.com/512/126/126174.png" alt="Carrinho de compras" />
-        <div id="cart-total">Total: $0.00</div>
-    </div>
+        <section id="shopping" class="shopping">
+            <div class="flex gap-m">
+                <img id="cart-counter" src="https://cdn-icons-png.flaticon.com/512/126/126174.png" alt="Cart Icon" />
+                <div id="cart-total">Total: $0.00</div>
+            </div>
+        </section>
 
-    <ul id="products-list"></ul>
+        <ul id="products-list"></ul>
+    </main>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/init.js"></script>
 </body>
 
 </html>
