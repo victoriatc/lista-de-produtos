@@ -156,3 +156,70 @@ h1 {
   color: #333;
   white-space: nowrap;
 }
+
+.user-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px; /* Largura da lateral */
+  height: 100%; /* Ocupa toda a altura da tela */
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000; /* Fica sobreposto ao conteúdo */
+}
+
+main {
+  margin-left: 300px; /* Ajusta o espaço para a barra lateral */
+  padding: 15px;
+}
+
+/*user*/
+.user-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.wishlist-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0066ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wishlist-button:hover {
+  background-color: #0056b3;
+}
+
+.wishlist-items {
+  width: 100%;
+  display: none;
+  margin-top: 20px;
+  overflow-y: auto; /* Scroll, caso os itens excedam a altura */
+}
+
+.wishlist-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.wishlist-item:last-child {
+  border-bottom: none;
+}

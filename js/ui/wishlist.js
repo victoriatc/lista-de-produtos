@@ -22,3 +22,36 @@ export function removeFromWishlist(itemId) {
 export function getWishlist() {
     return loadFromLocalStorage('wishlist');
 }
+
+// show wish list button event
+document.getElementById('wishlist-toggle').addEventListener('click', () => {
+    const wishlistContainer = document.getElementById('wishlist-items');
+    wishlistContainer.style.display =
+        wishlistContainer.style.display === 'none' || !wishlistContainer.style.display ? 'block' : 'none';
+    
+    if (wishlistContainer.style.display === 'block') {
+        loadWishlistItems();
+    }
+});
+
+// Upload wishlist items
+function loadWishlistItems() {
+    const wishlist = getWishlist();
+    const wishlistContainer = document.getElementById('wishlist-items');
+    wishlistContainer.innerHTML = '';
+
+    if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = '<p>There are no items in the wishlist</p>';
+        return;
+    }
+
+    wishlist.forEach((item) => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'wishlist-item';
+        itemElement.textContent = item.title;
+        wishlistContainer.appendChild(itemElement);
+    });
+}
+
+// invisible accordion
+document.getElementById('wishlist-items').style.display = 'none';
