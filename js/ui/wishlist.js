@@ -24,6 +24,7 @@ export function getWishlist() {
 }
 
 // show wish list button event
+function wishToggle(){
 document.getElementById('wishlist-toggle').addEventListener('click', () => {
     const wishlistContainer = document.getElementById('wishlist-items');
     wishlistContainer.style.display =
@@ -33,6 +34,8 @@ document.getElementById('wishlist-toggle').addEventListener('click', () => {
         loadWishlistItems();
     }
 });
+}
+
 
 // Upload wishlist items
 function loadWishlistItems() {
